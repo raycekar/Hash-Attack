@@ -4,7 +4,7 @@ import random
 from math import floor
 
 
-paths = []
+paths = ["/home/raycekar/Downloads/Medabots (2001)"]
 
 
 def hashAttack(file, path):
@@ -19,18 +19,18 @@ def getMd5(filePath):
     return subprocess.check_output("md5sum " + "\"" + filePath + "\"", shell=True, universal_newlines=True)
 
 def hashFile(filePath):
-    rand = floor(random.uniform(11,23))
+    rand = int(floor(random.uniform(11,23)))
     cmd = "truncate " + "-s " + "+" + str(rand) + " \"" + filePath + "\""
     #print(cmd)
     subprocess.call(cmd, shell=True)
 
 def startHashing(path):
-    root, dirs, files = os.walk(path).__next__()
-    for file in files:
-        #print(root + "/" + file)
-        hashAttack(file, root + "/")
-    for dir in dirs:
-        startHashing(root + "/" + dir)
+    for root, dirs, files in os.walk(path):
+        for file in files:
+            #print(root + "/" + file)
+            hashAttack(file, root + "/")
+        for dir in dirs:
+            startHashing(root + "/" + dir)
 
 for path in paths:
     startHashing(path)
