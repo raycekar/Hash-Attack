@@ -4,7 +4,7 @@ import random
 from math import floor
 
 
-paths = ["/home/raycekar/Downloads/Medabots (2001)"]
+paths = []
 
 
 def hashAttack(file, path):
