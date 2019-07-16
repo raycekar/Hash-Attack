@@ -29,8 +29,6 @@ def startHashing(path):
         for file in files:
             #print(root + "/" + file)
             hashAttack(file, root + "/")
-        for dir in dirs:
-            startHashing(root + "/" + dir)
 
 for path in paths:
     startHashing(path)
